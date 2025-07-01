@@ -2,7 +2,7 @@
 
 A powerful **Security Operations Center (SOC) Dashboard** built using Flask, integrating real-time alerting, log monitoring, threat detection, and incident response capabilities.
 
-> 🔐 Developed by [Sanjai M](https://github.com/Mrsanjai)  
+> 🔐 Developed by [Sanjai R](https://github.com/Mrsanjai)  
 > 🎯 Target Role: SOC Analyst | Blue Team | Threat Hunter
 
 ---
