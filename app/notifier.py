@@ -6,13 +6,13 @@ from email.mime.text import MIMEText
 
 # ========== 🔐 CONFIGURE THESE ==========
 
-SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"  # ✅ Your Slack webhook
+SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/xxxxxxxx/yyyyyyyyyyy/zzzzzzzzzzzzzzzzz"  # ✅ Your Slack webhook
 
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
-EMAIL_SENDER = " sdsanjai.blackheart@gmail.com"       # ✅ Your sender Gmail
-EMAIL_PASSWORD = "hgzkpvxhchkarjeg"                # ✅ Gmail app password (App-specific, not your actual Gmail password)
-EMAIL_RECEIVER = "sanjai.gozler@gmail.com"          # ✅ Receiver email
+EMAIL_SENDER = " youremail@gmail.com"       # ✅ Your sender Gmail
+EMAIL_PASSWORD = "asddddddddd"                # ✅ Gmail app password (App-specific, not your actual Gmail password)
+EMAIL_RECEIVER = "resiver@gmail.com"          # ✅ Receiver email
 
 # ========================================
 
