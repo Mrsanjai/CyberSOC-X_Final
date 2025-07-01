@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="content-wrapper">
+<div class="dashboard">
+    <h2>🧠 Real-Time Windows Log Monitoring</h2>
+
+    <p style="font-size: 13px; color: gray;">
+        Showing the most recent <strong>Windows Event Log</strong> alerts classified from live monitoring.
+    </p>
+
+    <table style="width:100%; margin-top:20px; border-collapse: collapse;">
+        <thead>
+            <tr style="background-color: #333; color: white;">
+                <th style="padding:10px;">Time</th>
+                <th style="padding:10px;">IOC</th>
+                <th style="padding:10px;">Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if alerts %}
+                {% for alert in alerts %}
+                    {% set row_color = '#e0ffe0' %}
+                    {% if alert.ioc == 'Failed Login Attempt' %}
+                        {% set row_color = '#ffc8c8' %}
+                    {% elif 'script' in alert.ioc|lower %}
+                        {% set row_color = '#fff5cc' %}
+                    {% endif %}
+                        
+                        <tr style="background-color: '{{ row_color }}';">
+
+                        <td style="padding:10px;">{{ alert.timestamp }}</td>
+                        <td style="padding:10px;">{{ alert.ioc }}</td>
+                        <td style="padding:10px;">{{ alert.summary }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr><td colspan="3" style="padding:10px;">No real-time Windows alerts yet.</td></tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock %}

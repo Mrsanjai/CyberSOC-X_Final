@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-wrapper">
+<div class="auth-container">
+    <h2>🔑 Multi-Factor Authentication</h2>
+    <form method="POST" action="{{ url_for('auth.mfa') }}">
+        <label for="token">Enter your 6-digit OTP code:</label>
+        <input type="text" name="token" pattern="\d{6}" maxlength="6" required><br><br>
+
+        <button type="submit">Verify</button>
+    </form>
+
+    <p class="info">Use the authenticator app you scanned during registration to get the code.</p>
+</div>
+</div>
+{% endblock %}

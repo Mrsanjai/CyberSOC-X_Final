@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-[#1E201E] px-4">
+  <div class="w-full max-w-md bg-[#1C1C1E] border border-[#3C3D37] rounded-2xl shadow-xl p-8 animate-fade-in">
+
+    <h2 class="text-2xl font-bold text-center text-[#f2deb4] mb-6 animate-slide-in">
+      🔐 <span class="text-cyan-400">Welcome to CyberSOC-X</span>
+    </h2>
+
+    <form method="POST" action="{{ url_for('auth.login') }}" class="space-y-5">
+
+  <!-- Username -->
+  <div>
+    <label for="username" class="block text-sm text-gray-300 mb-1">Username</label>
+    <input type="text" name="username" required
+           placeholder="Enter your username"
+           class="w-full" />
+  </div><br>
+
+  <!-- Password -->
+  <div>
+    <label for="password" class="block text-sm text-gray-300 mb-1">Password</label>
+    <input type="password" name="password" required
+           placeholder="Enter your password"
+           class="w-full" />
+  </div><br>
+
+  <!-- Login Button -->
+  <button type="submit"
+          class="w-full button-effect bg-cyan-600 hover:bg-cyan-500 text-white py-2 rounded-lg font-medium transition">
+    🔐 Login Securely
+  </button>
+</form>
+
+
+    <!-- Register Link -->
+    <p class="text-center text-sm text-gray-400 mt-4">
+      Don’t have an account?
+      <a href="{{ url_for('auth.register') }}" class="text-cyan-400 hover:underline hover:text-cyan-300 transition">
+        Register here
+      </a>
+    </p>
+
+  </div>
+</div>
+{% endblock %}

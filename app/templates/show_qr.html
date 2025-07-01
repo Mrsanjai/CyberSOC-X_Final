@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="content-wrapper">
+<div class="auth-container">
+    <h2>🔐 Setup MFA for {{ username }}</h2>
+
+    <p>Scan this QR code using Google Authenticator or any TOTP-compatible app:</p>
+
+    <div class="qr-box">
+        <img src="data:image/png;base64,{{ qr_b64 }}" alt="QR Code">
+    </div>
+
+    <p><strong>Manual Entry URI:</strong></p>
+    <code>{{ otp_uri }}</code>
+
+    <p class="info">Once done, go to the <a href="{{ url_for('auth.login') }}">Login</a> page and enter your 6-digit OTP after login.</p>
+</div>
+</div>
+{% endblock %}

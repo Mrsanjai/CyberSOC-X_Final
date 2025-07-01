@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="content-wrapper">
+<div class="p-6 max-w-3xl mx-auto space-y-6">
+
+    <h2 class="text-2xl font-bold text-cyan-400 text-center">🧪 APT Simulation Lab</h2>
+
+    <!-- APT Simulation Form -->
+    <form method="POST" class="bg-[#1C1C1E] p-6 rounded-xl shadow border border-gray-700 space-y-4">
+        <p class="text-gray-300 mb-2">🎯 Select APT stages to simulate:</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {% for key, label in scenarios.items() %}
+            <div class="flex items-center space-x-2">
+                <input type="checkbox" name="scenarios" value="{{ key }}" id="{{ key }}"
+                       class="accent-cyan-500 w-4 h-4">
+                <label for="{{ key }}" class="text-gray-200">{{ label }}</label>
+            </div>
+            {% endfor %}
+        </div>
+            <br>
+        <button type="submit"
+                class="bg-red-600 hover:bg-red-500 text-white px-6 py-2 rounded shadow mt-4">
+            ⚔️ Simulate APT Attack
+        </button>
+    </form>
+    <br>
+    <!-- Clear Log -->
+    <form method="POST" onsubmit="return confirm('🧹 Are you sure you want to clear the simulation log?');"
+          class="text-center">
+        <input type="hidden" name="clear" value="true">
+        <button type="submit"
+                class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded shadow mt-2">
+            🧹 Clear Simulation Log
+        </button>
+    </form>
+
+</div>
+</div>
+{% endblock %}

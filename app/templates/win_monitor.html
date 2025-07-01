@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+{% block content %}
+{% extends "base.html" %}
+
+<div class="content-wrapper p-6 text-white">
+  <h2 class="text-2xl font-bold mb-4">📊 Live System Monitor (Charts)</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-gray-900 p-4 rounded-lg shadow">
+      <canvas id="cpuChart" width="400" height="200"></canvas>
+    </div>
+    <div class="bg-gray-900 p-4 rounded-lg shadow">
+      <canvas id="memoryChart" width="400" height="200"></canvas>
+    </div>
+    <div class="bg-gray-900 p-4 rounded-lg shadow">
+      <canvas id="diskChart" width="400" height="200"></canvas>
+    </div>
+  </div>
+</div>
+
+<script>
+  let cpuData = [];
+  let memoryData = [];
+  let diskData = [];
+  let labels = [];
+
+  const cpuCtx = document.getElementById("cpuChart").getContext("2d");
+  const memoryCtx = document.getElementById("memoryChart").getContext("2d");
+  const diskCtx = document.getElementById("diskChart").getContext("2d");
+
+  const cpuChart = new Chart(cpuCtx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'CPU Usage (%)',
+        data: cpuData,
+        borderColor: 'rgba(0, 255, 0, 1)',
+        backgroundColor: 'rgba(0, 255, 0, 0.2)',
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 0
+      }]
+    },
+    options: { scales: { y: { min: 0, max: 100 } } }
+  });
+
+  const memoryChart = new Chart(memoryCtx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Memory Usage (%)',
+        data: memoryData,
+        borderColor: 'rgba(0, 150, 255, 1)',
+        backgroundColor: 'rgba(0, 150, 255, 0.2)',
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 0
+      }]
+    },
+    options: { scales: { y: { min: 0, max: 100 } } }
+  });
+
+  const diskChart = new Chart(diskCtx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Disk Usage (%)',
+        data: diskData,
+        borderColor: 'rgba(200, 100, 255, 1)',
+        backgroundColor: 'rgba(200, 100, 255, 0.2)',
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 0
+      }]
+    },
+    options: { scales: { y: { min: 0, max: 100 } } }
+  });
+
+  function updateCharts() {
+    fetch('/monitor/data')
+      .then(res => res.json())
+      .then(data => {
+        const timestamp = data.timestamp;
+        if (labels.length > 15) {
+          labels.shift();
+          cpuData.shift();
+          memoryData.shift();
+          diskData.shift();
+        }
+
+        labels.push(timestamp);
+        cpuData.push(data.cpu);
+        memoryData.push(data.memory);
+        diskData.push(data.disk);
+
+        cpuChart.update();
+        memoryChart.update();
+        diskChart.update();
+      })
+      .catch(err => console.error('Chart update failed:', err));
+  }
+
+  updateCharts(); // load immediately
+  setInterval(updateCharts, 5000); // every 5 sec
+</script>
+{% endblock %}
+

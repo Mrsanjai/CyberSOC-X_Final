@@ -1,0 +1,37 @@
+{
+    "1": {
+        "id": "1",
+        "username": "admin",
+        "password_hash": "scrypt:32768:8:1$JyFr1xxxCVjfJpi2$672051ea2788c6be56391808c2fdb388047a5122d2a4abd502d9a05dfccc589f6e7b2c7889d77838bef2a7ed09d99e0cbec85db905616e023adca0352417dac5",
+        "role": "admin",
+        "otp_secret": "L5WTOMAN2HWVUG7PAVWS4ARC54RZ2QV5"
+    },
+    "2": {
+        "id": "2",
+        "username": "admin",
+        "password_hash": "scrypt:32768:8:1$UKJeeO066Na7wTI5$1c68e7f3dfba67eb01aeddafa48a4fd2e3fef39c455c570448aad32e132450d8513fa958526e106ac9c76a6d56e1c34c90c81a2420909a8f33c806e21b5f1bdb",
+        "role": "admin",
+        "otp_secret": "HNESMUB4BXYNFXMZ2U45R7PXYGHPBM3Y"
+    },
+    "3": {
+        "id": "3",
+        "username": "analyst",
+        "password_hash": "scrypt:32768:8:1$ZxbE9r4458SFlE11$1c0ed7e7d73a0834cf2ec894970ecebdeb13ad902786ccfcc591a650f6949af476f500dd28c5175ab0d132636b2bab4d81f57f5e0e3c6b6dd5cdf8ad03c19097",
+        "role": "analyst",
+        "otp_secret": "B2APIFUYS4N4JA367IWTGFPZT6UA57MY"
+    },
+    "4": {
+        "id": "4",
+        "username": "nm,",
+        "password_hash": "scrypt:32768:8:1$mZIl5hcunzHGBRZt$2bc6e2a2cdaf5369500940be5c41e0e23fbd5bc3f44d1b6f4a790745491042cdd691602175eef844788f8538352dd1b0a5436f89497947b260b8da0988301c22",
+        "role": "analyst",
+        "otp_secret": "SRHFQ7KBCNWWZDROHQXDSIMB7CAPRIQC"
+    },
+    "5": {
+        "id": "5",
+        "username": "nm,",
+        "password_hash": "scrypt:32768:8:1$m4qrlMxBH76sOkMP$d5b332c2f75689ca5382a5ae8bc127a6b352e3ccab0f37ab0bedf59e85c370f2d7bf53cf11770dc20125855212812f0b4c7c051715158cdb1d0210dfde4649dd",
+        "role": "analyst",
+        "otp_secret": "VZC4DI5KLJWEQRTO3M4XFJHYMH4N7G3B"
+    }
+}

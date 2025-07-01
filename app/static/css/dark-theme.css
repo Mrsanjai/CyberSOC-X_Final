@@ -1,0 +1,460 @@
+/* === Base Layout === */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1E201E;
+    color: #ECDFCC;
+    display: flex;
+    overflow-x: hidden;
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+}
+
+/* === Sidebar === */
+.sidebar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    background: linear-gradient(to bottom, #697565, #3C3D37);
+    padding: 24px;
+    box-shadow: 2px 0 12px rgba(108, 126, 113, 0.1);
+    z-index: 100;
+}
+
+.sidebar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ECDFCC;
+    margin-bottom: 32px;
+}
+
+.sidebar-links a {
+    display: block;
+    margin-bottom: 20px;
+    color: #d9d9d9;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 14px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+.sidebar-links a:hover {
+    color: #ECDFCC;
+    background-color: #3C3D37;
+    box-shadow: 0 0 6px #ECDFCC55;
+    transform: translateX(4px);
+}
+
+/* === Main Content === */
+.main-content {
+    margin-left: 220px;
+    width: calc(100% - 220px);
+    min-height: 100vh;
+    background-color: #1E201E;
+}
+
+/* === Topbar === */
+.topbar {
+    padding: 16px 24px;
+    background-color: #3C3D37;
+    border-bottom: 1px solid #697565;
+    color: #ECDFCC;
+    font-weight: 500;
+}
+
+/* === Page Wrapper === */
+.page-content, .content-wrapper {
+    padding: 24px;
+}
+
+/* === Flash Messages === */
+#flash-messages .flash {
+    margin: 10px 24px;
+    padding: 10px 16px;
+    background-color: #3C3D37;
+    border-left: 4px solid #697565;
+    border-radius: 4px;
+    color: #ECDFCC;
+}
+
+/* === Stat Cards === */
+.stat-card {
+    background: #3C3D37;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(236, 223, 204, 0.1);
+    transition: all 0.3s ease;
+}
+.stat-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(236, 223, 204, 0.15);
+}
+
+/* === Alert Cards === */
+.alert-card {
+    background-color: #3C3D37;
+    border: 1px solid #697565;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 8px rgba(108, 117, 101, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.alert-card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 12px rgba(108, 117, 101, 0.15);
+}
+.status-badge {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+}
+.status-new { background-color: #6f9083; color: #fff; }
+.status-escalated { background-color: #b0a14d; color: #1E201E; }
+.status-closed { background-color: #7da675; color: #fff; }
+
+/* === Forms & Inputs === */
+form select, form input[type="text"] {
+    background-color: #2f312f;
+    border: 1px solid #575f55;
+    color: #ECDFCC;
+    padding: 8px 12px;
+    border-radius: 6px;
+    width: 100%;
+}
+form button, .button {
+    background-color: #697565;
+    border: none;
+    color: #ECDFCC;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+form button:hover, .button:hover {
+    transform: scale(1.03);
+    background-color: #3C3D37;
+    color: #ffffff;
+}
+
+/* === Toast === */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #3C3D37;
+    color: #ECDFCC;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(108, 117, 101, 0.25);
+    z-index: 9999;
+    display: none;
+    transition: opacity 0.3s ease;
+}
+
+/* === Background Overlays === */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url('/static/images/cyber-grid.svg');
+    opacity: 0.04;
+    z-index: -1;
+    pointer-events: none;
+}
+body::after {
+    content: attr(data-rain);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #a6e3a1;
+    font-family: monospace;
+    font-size: 10px;
+    line-height: 14px;
+    opacity: 0.03;
+    z-index: -1;
+    pointer-events: none;
+    white-space: pre;
+    animation: matrixRain 20s linear infinite;
+}
+@keyframes matrixRain {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.animate-fade-in { animation: fadeIn 0.5s ease-out both; }
+.animate-slide-in { animation: slideIn 0.6s ease-out both; }
+
+.table-auto {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 16px;
+  vertical-align: top;
+}
+td.align-top {
+  vertical-align: top;
+}
+.flex-col.gap-2 > * + * {
+  margin-top: 0.5rem; /* gap between buttons */
+}
+.shadow-lg {
+  box-shadow: 0 0 18px rgba(0, 217, 255, 0.1);
+}
+
+.border-gray-700 {
+  border-color: #374151;
+}
+.overflow-x-auto {
+  overflow-x: auto;
+}
+button {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+button:hover {
+  transform: scale(1.02);
+}
+.button-effect {
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 transparent;
+}
+.button-effect:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0, 255, 234, 0.3);
+}
+.button-effect {
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 transparent;
+}
+.button-effect:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0, 255, 234, 0.3);
+}
+.button-effect {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #06b6d4; /* cyan */
+  color: white;
+  border-radius: 6px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 transparent;
+}
+
+.button-effect:hover {
+  transform: scale(1.05);
+  background-color: #49473e8f;
+  box-shadow: 0 0 12px rgba(142, 141, 122, 0.374);
+}
+.button-effect {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500;
+  background-color: #f2deb4b7;
+  color: white;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  white-space: nowrap;
+  min-width: 120px;
+}
+
+.button-effect:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(79, 74, 65, 0.4);
+}
+/* === Optimized Export Buttons === */
+.export-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  border: 1.5px solid transparent;
+  min-width: 120px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ✅ CSV (Green Theme) */
+.export-csv {
+  background: linear-gradient(to right, #4e9a7f, #3c6e5a);
+  color: #fff;
+  border-color: #6f9083;
+}
+.export-csv:hover {
+  transform: scale(1.04);
+  background: linear-gradient(to right, #6f9083, #4e9a7f);
+  box-shadow: 0 0 10px rgba(111, 144, 131, 0.25);
+}
+
+/* 🧾 PDF (Gold Theme) */
+.export-pdf {
+  background: linear-gradient(to right, #b0a14d, #a2853a);
+  color: #1E201E;
+  border-color: #b0a14d;
+}
+.export-pdf:hover {
+  transform: scale(1.04);
+  background: linear-gradient(to right, #d9c272, #b0a14d);
+  box-shadow: 0 0 10px rgba(176, 161, 77, 0.25);
+}
+/* === Animated Export Buttons for IR Console === */
+.ir-export-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 10px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: 1.5px solid transparent;
+  min-width: 130px;
+}
+
+/* 🟢 Export CSV Button (Green Theme) */
+.ir-export-csv {
+  background: linear-gradient(to right, #4e9a7f, #3c6e5a);
+  color: #fff;
+  border-color: #6f9083;
+}
+.ir-export-csv:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #6f9083, #4e9a7f);
+  box-shadow: 0 0 12px rgba(111, 144, 131, 0.3);
+}
+
+/* 🔴 Export PDF Button (Gold Theme) */
+.ir-export-pdf {
+  background: linear-gradient(to right, #b0a14d, #a2853a);
+  color: #1E201E;
+  border-color: #b0a14d;
+}
+.ir-export-pdf:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #d9c272, #b0a14d);
+  box-shadow: 0 0 12px rgba(176, 161, 77, 0.3);
+}
+.main-content {
+    margin-left: 240px; /* match sidebar width */
+    padding: 20px;
+    transition: margin 0.3s ease;
+}
+
+.sidebar-fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 240px;  /* Match this in .main-content margin */
+    height: 100%;
+    background-color: #1e293b;
+    padding-top: 20px;
+    z-index: 10;
+}
+/* ===== Alert Console Custom Styles ===== */
+
+/* Export Button Styles */
+.export-box {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.export-csv {
+  background-color: #0891b2; /* cyan-600 */
+  color: #ffffff;
+}
+
+.export-csv:hover {
+  background-color: #06b6d4; /* cyan-500 */
+}
+
+.export-pdf {
+  background-color: #facc15; /* amber-400 */
+  color: #1a1a1a;
+}
+
+.export-pdf:hover {
+  background-color: #fde047; /* amber-300 */
+}
+
+/* Alert Card Enhancements */
+.alert-card {
+  background-color: #95b58f98;
+  border: 1px solid #171f2c; /* slate-700 */
+  border-radius: 1rem;
+  padding: 1.25rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.alert-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0.2,0,0,0.6);
+}
+
+.alert-ioc {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.alert-summary {
+  font-size: 0.9rem;
+  color: #011e43;
+  margin-top: 0.4rem;
+}
+
+.alert-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #5b1616;
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #000000a8;
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+  .export-box {
+    width: 100%;
+    text-align: center;
+  }
+}

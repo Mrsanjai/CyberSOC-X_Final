@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="content-wrapper">
+<div class="p-6 max-w-3xl mx-auto space-y-6">
+
+    <h2 class="text-2xl font-semibold text-cyan-400 text-center"> Upload Sysmon Log File</h2>
+
+    <!-- ✅ Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="rounded-md px-4 py-3 text-sm font-medium
+                            {% if category == 'success' %}
+                                bg-green-600 text-white
+                            {% elif category == 'error' %}
+                                bg-red-600 text-white
+                            {% else %}
+                                bg-gray-700 text-white
+                            {% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- 📤 Upload Form -->
+    <div class="bg-[#1C1C1E] rounded-xl shadow-md p-6 border border-gray-700">
+        <form method="POST" enctype="multipart/form-data" class="space-y-4">
+            <label for="logfile" class="block text-sm text-gray-300 font-medium">Choose a .log or .txt file:</label>
+            <input type="file" name="logfile" accept=".log,.txt"
+                   class="bg-[#2D2D30] text-white border border-gray-600 px-4 py-2 rounded w-full" required>
+
+            <button type="submit"
+                    class="bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-2 rounded shadow transition duration-200">
+                🚀 Upload & Analyze
+            </button>
+        </form>
+
+        <p class="text-sm text-gray-400 mt-4">
+            ⚠️ System logs will be scanned for malicious patterns such as:
+            <code class="text-yellow-300">mimikatz</code>,
+            <code class="text-yellow-300">encodedcommand</code>,
+            <code class="text-yellow-300">schtasks</code>,
+            <code class="text-yellow-300">powershell</code>, etc.
+        </p>
+    </div>
+
+</div>
+</div>
+{% endblock %}

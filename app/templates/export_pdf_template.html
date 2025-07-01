@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            color: #f0f0f0;
+            background-color: #1e1e1e;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #00e5ff;
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #555;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #00e5ff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #1e1e1e;
+        }
+    </style>
+</head>
+<body>
+    <h2>📄 CyberSOC-X Alert Report</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>IOC</th>
+                <th>Summary</th>
+                <th>Severity</th>
+                <th>MITRE Tactic</th>
+                <th>MITRE Technique</th>
+                <th>Status</th>
+                <th>Timestamp</th>
+                <th>Source</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for alert in alerts %}
+            <tr>
+                <td>{{ alert.id }}</td>
+                <td>{{ alert.ioc }}</td>
+                <td>{{ alert.summary }}</td>
+                <td>{{ alert.severity or "N/A" }}</td>
+                <td>{{ alert.mitre_tactic or "N/A" }}</td>
+                <td>{{ alert.mitre_technique or "N/A" }}</td>
+                <td>{{ alert.status }}</td>
+                <td>{{ alert.timestamp }}</td>
+                <td>{{ alert.source }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

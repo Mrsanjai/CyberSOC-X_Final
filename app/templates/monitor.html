@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="content-wrapper">
+<div class="monitor">
+    <h2>🖥️ System Resource Monitor</h2>
+
+    <div class="charts-grid">
+        <div class="chart-card">
+            <h4>CPU Usage (%)</h4>
+            <canvas id="cpuChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h4>Memory Usage (%)</h4>
+            <canvas id="memoryChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h4>Disk Usage (%)</h4>
+            <canvas id="diskChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h4>Network (MB Sent / Received)</h4>
+            <canvas id="networkChart"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const labels = [];
+        const cpuData = [], memData = [], diskData = [], netSentData = [], netRecvData = [];
+
+        const setupChart = (id, label, color) => new Chart(document.getElementById(id), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: label,
+                    data: [],
+                    fill: false,
+                    borderColor: color,
+                    backgroundColor: color + "33",
+                    tension: 0.3,
+                    pointRadius: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                animation: false,
+                scales: { y: { beginAtZero: true } },
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        const cpuChart = setupChart("cpuChart", "CPU %", "rgba(255, 99, 132)");
+        const memoryChart = setupChart("memoryChart", "Memory %", "rgba(54, 162, 235)");
+        const diskChart = setupChart("diskChart", "Disk %", "rgba(255, 206, 86)");
+        const networkChart = new Chart(document.getElementById("networkChart"), {
+            type: "line",
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "Sent (MB)",
+                        data: netSentData,
+                        borderColor: "rgba(75, 192, 192)",
+                        fill: false,
+                        tension: 0.3,
+                        pointRadius: 2
+                    },
+                    {   
+                        label: "Received (MB)",
+                        data: netRecvData,
+                        borderColor: "rgba(153, 102, 255)",
+                        fill: false,
+                        tension: 0.3,
+                        pointRadius: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                animation: false,
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+
+        function updateCharts() {
+            fetch("/monitor/data")
+                .then(res => res.json())
+                .then(data => {
+                    if (labels.length > 20) {
+                        labels.shift(); cpuData.shift(); memData.shift(); diskData.shift();
+                        netSentData.shift(); netRecvData.shift();
+                    }
+
+                    labels.push(data.timestamp);
+                    cpuData.push(data.cpu);
+                    memData.push(data.memory);
+                    diskData.push(data.disk);
+                    netSentData.push(data.net_sent);
+                    netRecvData.push(data.net_recv);
+
+                    cpuChart.data.datasets[0].data = cpuData;
+                    memoryChart.data.datasets[0].data = memData;
+                    diskChart.data.datasets[0].data = diskData;
+                    networkChart.update();
+                    cpuChart.update();
+                    memoryChart.update();
+                    diskChart.update();
+                });
+        }
+
+        setInterval(updateCharts, 3000);
+    </script>
+</div>
+</div>
+{% endblock %}

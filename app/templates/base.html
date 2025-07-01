@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CyberSOC-X</title>
+    <link href="{{ url_for('static', filename='css/dark-theme.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dark-bg text-white font-poppins" data-rain="1010101010\n00110011\n11001100\n01010101\n10011001\n">
+
+    <!-- Sidebar -->
+    <aside class="sidebar-fixed">
+        <div class="sidebar-logo">🛡️ CyberSOC-X</div>
+        <nav class="sidebar-links">
+            <a href="{{ url_for('dashboard.dashboard') }}">📊 Dashboard</a>
+            <a href="{{ url_for('sysmon.sysmon') }}">📥 Sysmon Upload</a>
+            <a href="{{ url_for('pcap.pcap_upload') }}">💾 PCAP Upload</a>
+            <a href="{{ url_for('training_lab.training_lab') }}">🧠 APT Lab</a>
+            <a href="{{ url_for('ir_console.ir_console') }}">🛠️ IR Console</a>
+            <a href="{{ url_for('alerts.view_alerts') }}">🚨 Alerts <span id="alert-badge" class="badge">0</span></a>
+            <a href="{{ url_for('winlog.home') }}">📜 Windows Logs</a>
+            <a href="{{ url_for('system_monitor.monitor') }}">🖥️ System Monitor</a>
+
+            <!-- ✅ Reset Logs Button (JavaScript controlled) -->
+            <a href="#" onclick="confirmReset()"
+               class="inline-block bg-red-600 text-white text-sm px-4 py-1 rounded hover:bg-red-700 transition">
+                🧹 Reset Logs
+            </a>
+
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('auth.logout') }}">🚪 Logout</a>
+            {% else %}
+                <a href="{{ url_for('auth.login') }}">🔐 Login</a>
+            {% endif %}
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div id="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <main class="page-content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <!-- 🔁 Alert Badge Poller -->
+    <script>
+        function checkForAlerts() {
+            fetch("/dashboard/notifications")
+                .then(res => res.json())
+                .then(data => {
+                    const badge = document.getElementById("alert-badge");
+                    badge.style.display = data.count > 0 ? "inline-block" : "none";
+                    badge.textContent = data.count;
+                });
+        }
+        setInterval(checkForAlerts, 5000);
+        checkForAlerts();
+    </script>
+
+    <!-- 🔔 Toast Notification -->
+    <div id="toast" class="toast"></div>
+    <script>
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.textContent = msg;
+            toast.style.display = "block";
+            toast.style.opacity = 1;
+            setTimeout(() => {
+                toast.style.opacity = 0;
+                setTimeout(() => { toast.style.display = "none"; }, 1000);
+            }, 5000);
+        }
+
+        let lastAlertId = null;
+        function pollLiveAlert() {
+            fetch("/dashboard/stream")
+                .then(res => res.json())
+                .then(data => {
+                    if (data.id && data.id !== lastAlertId) {
+                        lastAlertId = data.id;
+                        showToast(data.summary || "🚨 New alert detected!");
+                    }
+                });
+        }
+        setInterval(pollLiveAlert, 5000);
+    </script>
+
+    <!-- ✅ Reset Logs Confirmation -->
+    <script>
+        function confirmReset() {
+            if (confirm("⚠️ Are you sure you want to clear all logs and start fresh?")) {
+                fetch("/dashboard/reset-logs", { method: "POST" })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            showToast("✅ Logs reset successfully.");
+                            setTimeout(() => window.location.reload(), 1500);
+                        } else {
+                            showToast("❌ Failed to reset logs.");
+                        }
+                    })
+                    .catch(() => {
+                        showToast("❌ Reset failed due to an error.");
+                    });
+            }
+        }
+    </script>
+
+</body>
+</html>

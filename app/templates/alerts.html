@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/ir_console.css') }}">
+
+<div class="p-6 space-y-8 text-white">
+
+  <!-- 🔔 Heading -->
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <h2 class="text-3xl font-bold text-cyan-400">📋 Alert Console</h2>
+
+    <div class="flex flex-wrap gap-4 mt-2">
+      <a href="{{ url_for('ir_console.export_alerts_csv') }}" class="export-box export-csv">
+        📤 Export CSV
+      </a>
+      <a href="{{ url_for('ir_console.export_alerts_pdf') }}" class="export-box export-pdf">
+        🧾 Export PDF
+      </a>
+    </div>
+  </div>
+<br>
+  <!-- 🔎 Filter Form -->
+  <form method="GET" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div>
+      <label for="status" class="text-sm text-gray-400">Status</label>
+      <select name="status" id="status"
+              class="bg-[#1C1C1E] border border-gray-700 rounded-md px-3 py-2 w-full focus:ring-cyan-500 focus:border-cyan-500">
+        <option value="">All</option>
+        <option value="new">New</option>
+        <option value="escalated">Escalated</option>
+        <option value="closed">Closed</option>
+      </select>
+    </div><br>
+    <div>
+      <label for="keyword" class="text-sm text-gray-400">Keyword</label>
+      <input type="text" name="keyword" id="keyword" placeholder="Search IOC or Summary"
+             class="bg-[#1C1C1E] border border-gray-700 rounded-md px-3 py-2 w-full focus:ring-cyan-500 focus:border-cyan-500">
+    </div><br>
+    <div class="flex items-end">
+      <button type="submit"
+              class="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded-md shadow transition duration-200 w-full">
+        🔍 Search
+      </button>
+    </div>
+  </form>
+<br><br>
+  <!-- 🧠 Alert Cards -->
+  <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+    {% for alert in alerts %}
+    <div class="alert-card">
+      <!-- IOC -->
+      <div class="alert-ioc">
+        🛡️ {{ alert.ioc or 'Anomaly Detected' }}
+      </div>
+
+      <!-- Summary -->
+      <p class="alert-summary">
+        {{ alert.summary or 'No summary available.' }}
+      </p>
+
+      <!-- Status + Timestamp -->
+      <div class="alert-footer">
+        <div>
+          Status:
+          {% if alert.status == 'new' %}
+            <span class="text-cyan-400 font-medium">New</span>
+          {% elif alert.status == 'escalated' %}
+            <span class="text-yellow-400 font-medium">Escalated</span>
+          {% elif alert.status == 'closed' %}
+            <span class="text-green-400 font-medium">Closed</span>
+          {% else %}
+            <span class="text-gray-400">{{ alert.status }}</span>
+          {% endif %}
+        </div>
+        <div class="text-xs text-gray-500">{{ alert.timestamp }}</div>
+      </div>
+    </div>
+    {% else %}
+      <p class="text-center col-span-full text-gray-400">No alerts found.</p>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

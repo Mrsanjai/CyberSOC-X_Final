@@ -1,0 +1,10 @@
+2025-06-26 09:01:00 [INFO] System boot completed successfully.
+2025-06-26 09:15:32 [INFO] User sanjai logged in from IP 192.168.1.50
+2025-06-26 09:45:01 [WARNING] Multiple failed login attempts from 10.0.0.12
+2025-06-26 10:00:22 [INFO] Antivirus definitions updated.
+2025-06-26 10:33:18 [HIGH] Suspicious PowerShell command: powershell.exe -EncodedCommand aW1wb3J0LXNlcnZpY2Ugd2ViY2xpZW50
+2025-06-26 10:50:11 [INFO] File access logged for user documents/report.pdf
+2025-06-26 11:12:47 [MEDIUM] Outbound connection to blacklisted IP: 185.244.25.12
+2025-06-26 11:33:09 [INFO] Scheduled task executed: backup.bat
+2025-06-26 11:59:59 [HIGH] Detected potential credential dumping: mimikatz.exe "sekurlsa::logonpasswords"
+2025-06-26 12:30:45 [WARNING] Suspicious DLL load via rundll32: rundll32.exe shell32.dll,Control_RunDLL payload.dll

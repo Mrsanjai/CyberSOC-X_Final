@@ -1,0 +1,12 @@
+flask
+flask-login
+pyotp
+psutil
+scapy
+flask-mail
+werkzeug
+jinja2
+qrcode
+requests
+scikit-learn
+numpy

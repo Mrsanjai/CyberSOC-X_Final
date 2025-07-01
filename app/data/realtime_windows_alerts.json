@@ -1,0 +1,266 @@
+[
+  {
+    "timestamp": "2025-07-01T10:04:05.060644",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:04:02.975037",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:04:01.225412",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:58.611714",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:57.476731",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:54.978085",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:53.918230",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:51.321830",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000P\u0000r\u0000o\u0000d\u0000u\u0000c\u0000t\u0000:\u0000 \u0000M\u0000i\u0000c\u0000r\u0000o\u0000s\u0000o\u0000f\u0000t\u0000\u00ae\u0000 \u0000W\u0000i\u0000n\u0000d\u0000o\u0000w\u0000s\u0000\u00ae\u0000 \u0000O\u0000p\u0000e\u0000r\u0000a\u0000t\u0000i\u0000n\u0000g\u0000 \u0000S...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:50.149137",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:47.621863",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:46.460086",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:43.885557",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000D\u0000e\u0000s\u0000c\u0000r\u0000i\u0000p\u0000t\u0000i\u0000o\u0000n\u0000:\u0000 \u0000W\u0000i\u0000n\u0000d\u0000o\u0000w\u0000s\u0000 \u0000C\u0000o\u0000m\u0000m\u0000a\u0000n\u0000d\u0000 \u0000P\u0000r\u0000o\u0000c\u0000e\u0000s\u0000s\u0000o\u0000r\u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:42.926365",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:40.351467",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:39.008378",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:36.695425",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:35.266596",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:32.632679",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:31.315619",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:28.700317",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:27.768723",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:25.100762",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:24.138022",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:21.580188",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:20.577226",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:03:16.881667",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:02:23.668653",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:02:19.669233",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:02:15.680374",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:02:11.583271",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:02:07.754808",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:02:03.831914",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  },
+  {
+    "timestamp": "2025-07-01T10:02:00.113212",
+    "ioc": "anomaly",
+    "summary": "\ud83e\udd16 ML Anomaly Detected: \u0000...",
+    "mitre_tactic": "Unknown",
+    "mitre_technique": "N/A",
+    "severity": "high"
+  }
+]

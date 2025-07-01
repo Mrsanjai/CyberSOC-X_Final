@@ -1,0 +1,51 @@
+[
+    {
+        "id": "rt-1750535717",
+        "ioc": "curl",
+        "action": "block_ip",
+        "analyst": "admin",
+        "timestamp": "2025-06-24T04:39:16.748023"
+    },
+    {
+        "id": "pcap-49",
+        "ioc": "TCP SYN Scan (possible Nmap)",
+        "action": "block_ip",
+        "analyst": "admin",
+        "timestamp": "2025-06-24T05:53:36.143689"
+    },
+    {
+        "id": "pcap-50",
+        "ioc": "TCP SYN Scan (possible Nmap)",
+        "action": "quarantine",
+        "analyst": "admin",
+        "timestamp": "2025-06-27T04:06:07.023537"
+    },
+    {
+        "id": "sysmon-8",
+        "ioc": "mimikatz",
+        "action": "block_ip",
+        "analyst": "admin",
+        "timestamp": "2025-06-30T07:21:09.716450"
+    },
+    {
+        "id": "sysmon-8",
+        "ioc": "mimikatz",
+        "action": "revoke_user",
+        "analyst": "admin",
+        "timestamp": "2025-06-30T07:21:14.045266"
+    },
+    {
+        "id": "sysmon-9",
+        "ioc": "rundll32",
+        "action": "quarantine",
+        "analyst": "admin",
+        "timestamp": "2025-06-30T07:21:20.603825"
+    },
+    {
+        "id": "rt-1751271704",
+        "ioc": "powershell",
+        "action": "quarantine",
+        "analyst": "admin",
+        "timestamp": "2025-06-30T09:29:30.401078"
+    }
+]

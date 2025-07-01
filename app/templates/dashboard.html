@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="px-6 py-6 space-y-10">
+
+    <!-- 👋 Welcome -->
+    <h2 class="text-2xl font-bold text-white animate-fade-in">
+        👋 Welcome, <span class="text-cyan-400">{{ user.username }}</span>
+        <span class="text-gray-400">({{ user.role | capitalize }})</span>
+    </h2>
+
+    <!-- 📊 Stats Cards -->
+    <div id="stat-cards" class="grid grid-cols-1 md:grid-cols-4 gap-6 animate-slide-in">
+        <!-- Total -->
+        <div class="stat-card bg-gradient-to-r from-cyan-800 to-cyan-600">
+            <div class="text-sm text-white opacity-70">📦 Total Alerts</div>
+            <div id="total-alerts" class="text-4xl font-bold text-white mt-1">{{ total_alerts }}</div>
+        </div>
+
+        <!-- New -->
+        <div class="stat-card bg-gradient-to-r from-blue-700 to-blue-500">
+            <div class="text-sm text-white opacity-70">🆕 New</div>
+            <div id="new-alerts" class="text-4xl font-bold text-white mt-1">{{ status_counts.new }}</div>
+        </div>
+
+        <!-- Escalated -->
+        <div class="stat-card bg-gradient-to-r from-yellow-700 to-yellow-500">
+            <div class="text-sm text-white opacity-70">⚠️ Escalated</div>
+            <div id="escalated-alerts" class="text-4xl font-bold text-white mt-1">{{ status_counts.escalated }}</div>
+        </div>
+
+        <!-- Closed -->
+        <div class="stat-card bg-gradient-to-r from-green-700 to-green-500">
+            <div class="text-sm text-white opacity-70">✅ Closed</div>
+            <div id="closed-alerts" class="text-4xl font-bold text-white mt-1">{{ status_counts.closed }}</div>
+        </div>
+    </div>
+
+    <!-- 📊 Chart Section -->
+    <div class="bg-[#1a2238] rounded-xl p-6 shadow-xl animate-fade-in">
+        <h3 class="text-cyan-300 text-lg font-semibold mb-4">📊 Live Alert Summary by Source</h3>
+        <canvas id="alertChart" height="140"></canvas>
+    </div>
+</div>
+
+<!-- 📈 Chart Script with Animation -->
+<script>
+    let chartInstance;
+
+    function renderChart(data) {
+        const ctx = document.getElementById("alertChart").getContext("2d");
+        chartInstance = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: Object.keys(data.by_source),
+                datasets: [{
+                    label: "Alerts",
+                    data: Object.values(data.by_source),
+                    backgroundColor: [
+                        "#06b6d4", "#facc15", "#f87171", "#10b981", "#6366f1", "#e879f9"
+                    ],
+                    borderRadius: 10,
+                    barThickness: 30
+                }]
+            },
+            options: {
+                animation: {
+                    duration: 1500,
+                    easing: 'easeInOutElastic' // 🎯 Wave-like animation
+                },
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: "#e0f2f1", stepSize: 1 },
+                        grid: { color: "#33415540" }
+                    },
+                    x: {
+                        ticks: { color: "#e0f2f1" },
+                        grid: { color: "#33415520" }
+                    }
+                }
+            }
+        });
+    }
+
+    function refreshDashboardData() {
+        fetch("/dashboard/summary")
+            .then(res => res.json())
+            .then(data => {
+                // 🔁 Update Chart
+                if (chartInstance) {
+                    chartInstance.data.labels = Object.keys(data.by_source);
+                    chartInstance.data.datasets[0].data = Object.values(data.by_source);
+                    chartInstance.update();
+                }
+
+                // 🔁 Update Stats
+                document.getElementById("total-alerts").textContent = data.total_alerts || 0;
+                document.getElementById("new-alerts").textContent = data.status_counts.new || 0;
+                document.getElementById("escalated-alerts").textContent = data.status_counts.escalated || 0;
+                document.getElementById("closed-alerts").textContent = data.status_counts.closed || 0;
+            });
+    }
+
+    // 🟢 First Load
+    fetch("/dashboard/summary")
+        .then(res => res.json())
+        .then(data => renderChart(data));
+
+    // 🔁 Auto-refresh
+    setInterval(refreshDashboardData, 3000);
+</script>
+{% endblock %}
